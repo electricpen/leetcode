@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/judge_circle.js"
+      "program": "${file}"
     }
   ]
 }
