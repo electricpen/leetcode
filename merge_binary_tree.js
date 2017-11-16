@@ -16,24 +16,33 @@ var mergeTrees = function(t1, t2) {
   var traverse = function(t1, t2, r1) {
     if (t1 !== null && t2 !== null) {
       r1.val = t1.val + t2.val;
-    } else if (t1.left === null && t2.left !== null) {
+    }
+    if (t1.left === null && t2.left !== null) {
       r1.left = t2.left;
     } else if (t1.left !== null && t2.left === null) {
       r1.left = t1.left;
-    } else if (t1.right === null && t2.right !== null) {
-      r1.right = t2.right;
-    } else if (t1.right !== null && t2.right === null) {
-      r1.right = t1.right;
     } else if (t1.left !== null && t2.left !== null) {
       r1.left = new TreeNode(0);
       traverse(t1.left, t2.left, r1.left);
+    }
+    if (t1.right === null && t2.right !== null) {
+      r1.right = t2.right;
+    } else if (t1.right !== null && t2.right === null) {
+      r1.right = t1.right;
     } else if (t1.right !== null && t2.right !== null) {
       r1.right = new TreeNode(0);
       traverse(t1.right, t2.right, r1.right);
     }
   };
 
+  traverse(t1, t2, result);
   return result;
 };
 
-console.log(mergeTrees());
+var tree1 = new TreeNode(1);
+tree1.left = new TreeNode(2);
+tree1.right = new TreeNode(3);
+var tree2 = new TreeNode(5);
+tree2.left = new TreeNode(2);
+
+console.log(mergeTrees(tree1, tree2));
