@@ -28,4 +28,16 @@ def better_fibonacci(n):
     for i in range(n):
         x, y = y, x + y 
     return x
+
+const better_fibonacci = (n) => {
+  let x = 0;
+  let y = 1;
+  let current = 0;
+  for (let i = 0; i < n; i++) {
+    current = x + y;
+    x = y;
+    y = current;
+  }
+  return current;
+}
 """
