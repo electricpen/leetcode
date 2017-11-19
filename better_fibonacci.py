@@ -13,4 +13,19 @@ def better_fibonacci(n):
             current = first + second
             first = second
             second = current
+            n -= 1
         return current
+
+
+print(better_fibonacci(5))
+
+"""
+ideal solution:
+
+def better_fibonacci(n):
+    x = 0
+    y = 1
+    for i in range(n):
+        x, y = y, x + y 
+    return x
+"""
