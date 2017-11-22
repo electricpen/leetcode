@@ -14,4 +14,4 @@ def max_gain(input_list):
     return largest
 
 
-print(max_gain([1, 2, 3, 4, 5, 6, 10]))
+print(max_gain([10, 2, 3, 1]))
