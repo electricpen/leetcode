@@ -21,6 +21,7 @@ var mergeTrees = function(t1, t2) {
       r1.left = t2.left;
     } else if (t1.left !== null && t2.left === null) {
       r1.left = t1.left;
+      ``;
     } else if (t1.left !== null && t2.left !== null) {
       r1.left = new TreeNode(0);
       traverse(t1.left, t2.left, r1.left);
