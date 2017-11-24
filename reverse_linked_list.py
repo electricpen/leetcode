@@ -41,16 +41,14 @@ class SinglyLinkedList:
             pointer.next = new_node
 
     def reverse(self):
-        stack = []
-        pointer = self.head
-        reverse_list = SinglyLinkedList()
-        while pointer.next != None:
-            stack.append(pointer.getData())
-            pointer = pointer.next
-        while len(stack) > 0:
-            reverse_list.insert(stack.pop())
-        reverse_list.show()
-        self = reverse_list
+        last = None
+        current = self.head
+        while current != None:
+            next = current.next
+            current.next = last
+            last = current
+            current = next
+        self.head = last
 
 
 test = SinglyLinkedList()
