@@ -8,15 +8,12 @@ class BinaryTree:
         self.left_child = None
         self.right_child = None
 
-    def postorder(self, node):
-        if node != None:
-            node = self
-        if node.left_child != None:
-            self.postorder(node.left_child)
-        elif node.right_child != None:
-            self.postorder(node.right_child)
-        post_ordered_list.append(node.get_root_val)
-        return
+    def postorder(self):
+        if self.get_left_child():
+            self.get_left_child().postorder()
+        if self.get_right_child():
+            self.get_right_child().postorder()
+        post_ordered_list.append(self.get_root_val())
 
     def get_right_child(self):
         return self.right_child
@@ -29,3 +26,10 @@ class BinaryTree:
 
     def get_root_val(self):
         return self.data
+
+
+test = BinaryTree(1)
+test.right_child = BinaryTree(3)
+test.left_child = BinaryTree(2)
+test.postorder()
+print(post_ordered_list)
