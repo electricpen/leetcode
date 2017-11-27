@@ -3,8 +3,7 @@ function TreeNode(val) {
   this.left = this.right = null;
 }
 
-var mergeTrees = function(t1, t2) {
-  let result = new TreeNode(0);
+var mergeTrees = function (t1, t2) {
   /*
   traverse three trees simultaneously(t1, t2, result)
     if both nodes exist, result node equals sum of values
@@ -13,31 +12,22 @@ var mergeTrees = function(t1, t2) {
     if both have right, traverse(right)
     if one has right, append that child to result.right
   */
-  var traverse = function(t1, t2, r1) {
-    if (t1 !== null && t2 !== null) {
-      r1.val = t1.val + t2.val;
-    }
-    if (t1.left === null && t2.left !== null) {
-      r1.left = t2.left;
-    } else if (t1.left !== null && t2.left === null) {
-      r1.left = t1.left;
-      ``;
-    } else if (t1.left !== null && t2.left !== null) {
-      r1.left = new TreeNode(0);
-      traverse(t1.left, t2.left, r1.left);
-    }
-    if (t1.right === null && t2.right !== null) {
-      r1.right = t2.right;
-    } else if (t1.right !== null && t2.right === null) {
-      r1.right = t1.right;
-    } else if (t1.right !== null && t2.right !== null) {
-      r1.right = new TreeNode(0);
-      traverse(t1.right, t2.right, r1.right);
-    }
-  };
-
-  traverse(t1, t2, result);
-  return result;
+  if (t1 && t2) {
+    t1.val += t2.val;
+  } else if (!t1 && t2) {
+    t1 = t2;
+  }
+  if (t1.left && t2.left) {
+    mergeTrees(t1.left, t2.left);
+  } else if (!t1.left && t2.left) {
+    t1.left = t2.left;
+  }
+  if (t1.right && t2.right) {
+    mergeTrees(t1.right, t2.right);
+  } else if (!t1.right && t2.right) {
+    t1.right = t2.right;
+  }
+  return t1;
 };
 
 var tree1 = new TreeNode(1);
