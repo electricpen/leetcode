@@ -4,14 +4,6 @@ function TreeNode(val) {
 }
 
 var mergeTrees = function (t1, t2) {
-  /*
-  traverse three trees simultaneously(t1, t2, result)
-    if both nodes exist, result node equals sum of values
-    if both have left, traverse(left)
-    if one has left, append that child to result.left
-    if both have right, traverse(right)
-    if one has right, append that child to result.right
-  */
   if (t1 && t2) {
     t1.val += t2.val;
   } else if (!t1 && t2) {
