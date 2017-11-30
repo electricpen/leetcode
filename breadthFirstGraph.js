@@ -42,8 +42,11 @@ const breadthFirstSearch = (vertex, callback) => {
   while (queue.size > 0) {
     let current = queue.dequeue();
     callback(current);
+    current.status = 'visited';
     for (edge of current) {
-      queue.enqueue(edge);
+      if (edge.status === 'unvisited') {
+        queue.enqueue(edge);
+      }
     }
   }
 };
