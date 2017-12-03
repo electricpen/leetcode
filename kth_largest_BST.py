@@ -15,7 +15,7 @@ class BinaryTree:
         ordered_list = []
 
         def traverse(root):
-            if root = None:
+            if root is None:
                 return
             else:
                 traverse(root.left_child)
