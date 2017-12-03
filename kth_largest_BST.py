@@ -11,18 +11,22 @@ class BinaryTree:
         else:
             return (self.size(root.left_child) + 1 + self.size(root.right_child))
 
-    def depth(self, root):
-        if root is None:
-            return 0
-        else:
-            return 1 + self.depth(root.right_child)
+    def list_nodes(self):
+        ordered_list = []
+
+        def traverse(root):
+            if root = None:
+                return
+            else:
+                traverse(root.left_child)
+                ordered_list.append(root)
+                traverse(root.right_child)
+        traverse(self.root)
+        return ordered_list
 
     def find_kth_largest(self, root, k):
             # Return Element should be of type TreeNode
-        height = depth(self.root)
-        if k > height:
+        if not root:
             return None
-        position = self.root
-        for i in range(height - (k - 1)):
-            position = position.right_child
-        return position.data
+        list = self.list_nodes()
+        return list[-k]
