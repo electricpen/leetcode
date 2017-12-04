@@ -50,7 +50,14 @@ class BinaryTree:
         elif self.is_leaf(root):
             return 1
         else:
-            return self.max_length(root.left_child) + self.max_length(root.right_child) + 1
+            alternate = 0
+            if root.left_child is None:
+                alternate = self.diameter(root.right_child)
+            elif root.right_child is None:
+                alternate = self.diameter(root.left_child)
+            normal = self.max_length(root.left_child) + \
+                self.max_length(root.right_child) + 1
+            return normal if normal > alternate else alternate
 
 
 # Testing area
