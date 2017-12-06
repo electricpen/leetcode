@@ -69,3 +69,23 @@ test = BinaryTree()
 for num in seed:
     test.insert(test.root, num)
 print(test.find_kth_smallest(test.root, 2))
+
+
+"""
+    Optimal solution recursively iterates until size == k - 1
+
+    
+    def find_kth_smallest(self,root,k):
+        # Return element should be of Type TreeNode
+        
+        if root is None:
+            return 
+        
+        if self.size(root.left_child) == k-1:
+            return root
+            
+        if (k <= self.size(root.left_child)):
+            return self.find_kth_smallest(root.left_child, k)
+        else:
+            return self.find_kth_smallest(root.right_child, k - self.size(root.left_child)-1)
+"""
