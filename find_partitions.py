@@ -1,4 +1,10 @@
 def find_partitions(input_list):
+    def create_range(begin, end):
+        if end:
+            return str(begin) + '-' + str(end)
+        else:
+            return str(begin)
+
     results = []
     if input_list:
         current = input_list[0]
@@ -12,5 +18,9 @@ def find_partitions(input_list):
                 end = prev
                 results.append(create_range(begin, end))
                 begin = current
+            if current == begin:
+                results.append(create_range(begin, None))
+            else:
+                results.append(create_range(begin, current))
 
     return results
