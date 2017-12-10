@@ -20,7 +20,7 @@ def find_range(input_list, input_number):
         elif len(sorted_list) < 1:
             return -1
         elif target > sorted_list[midpoint]:
-            return binary_search(sorted_list[midpoint:], target)
+            return midpoint + binary_search(sorted_list[midpoint:], target)
         elif target < sorted_list[midpoint]:
             return binary_search(sorted_list[:midpoint], target)
 
@@ -43,3 +43,6 @@ def find_range(input_list, input_number):
     else:
         return None
     return Range(begin, end)
+
+
+print(find_range([1, 2, 5, 5, 8, 8, 10], 8))
