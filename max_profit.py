@@ -1,28 +1,28 @@
 def max_profit(prices):
-    best_price = 0
     if prices is None:
         return 0
 
-    def permutations(prices, current_price=0, profit=0, buy=True):
-        nonlocal best_price
+    def permutations(prices, current_price=0, profit=0, buy=True, results=[]):
         if len(prices) == 1:
             if not buy:
-                if prices[0] < current_price:
+                if prices[0] > current_price:
                     profit += prices[0] - current_price
-            if profit > best_price:
-                best_price = profit
+            results.append(profit)
         else:
-            for price in prices:
+            for index, price in enumerate(prices):
                 if buy:
-                    permutations(prices[1:], price, profit, False)
+                    permutations(prices[index + 1:], price, profit, False)
                 else:
                     if price > current_price:
-                        permutations(prices[1:], 0, profit +
+                        permutations(prices[index + 1:], 0, profit +
                                      (price - current_price), True)
+        return results
 
-    permutations(prices)
-
+    results = permutations(prices)
+    for price in results:
+        if price > best_price:
+            best_price = price
     return best_price
 
 
-print(max_profit([20, 80, 50, 100, 20]))
+print(max_profit([10, 20, 1000, 0]))
