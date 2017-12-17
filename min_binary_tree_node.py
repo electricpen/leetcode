@@ -16,10 +16,7 @@ class BinaryTree:
 
     def find_min(self, root):
         # Return element should be of type TreeNode
-        if root.left_child is None and root.righright_childt is None:
+        if root.left_child is None:
             return root.data
-        else:
-            if root.left_child:
-                return self.find_min(root.left_child)
-            elif root.right_child:
-                return self.find_min(root.right_child)
+        elif root.left_child:
+            return self.find_min(root.left_child)
