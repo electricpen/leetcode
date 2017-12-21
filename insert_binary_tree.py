@@ -30,11 +30,11 @@ class BinaryTree:
                 root.right_child = new_node
 
 
-root = TreeNode(10)
-tree = BinaryTree(root)
-tree.insert(root, 5)
-tree.insert(root, 3)
-tree.insert(root, 4)
-tree.insert(root, 15)
-tree.insert(root, 12)
-print(tree)
+def test(list):
+    test_tree = BinaryTree(TreeNode(list[0]))
+    for num in list[1:]:
+        test_tree.insert(test_tree.root, num)
+    return test_tree
+
+
+test([4, 2, 8, 5, 10])
