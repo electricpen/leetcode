@@ -4,11 +4,9 @@ var smallestDistancePair = function(nums, k) {
   };
   let results = {};
   let diff = [];
-  // k =
   const numericSort = (a, b) => {
     return a - b;
   };
-  nums.sort(numericSort);
   for (let i = 0; i < nums.length; i++) {
     for (let j = 0; j < nums.length; j++) {
       if (i !== j) {
@@ -19,8 +17,10 @@ var smallestDistancePair = function(nums, k) {
   for (pair in results) {
     diff.push(pair.split(" ").reduce(sum));
   }
-  diff.sort(numericSort);
-  return diff[k - 1] === undefined ? diff[diff.length - 1] : diff[k - 1];
+  let list = Array.from(diff);
+  list.sort(numericSort);
+  k = (k - 1) % list.length;
+  return list[k];
 };
 
-console.log(smallestDistancePair([1, 6, 1], 3));
+console.log(smallestDistancePair([62, 100, 4], 2));
