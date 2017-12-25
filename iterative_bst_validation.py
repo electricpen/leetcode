@@ -28,20 +28,25 @@ class BinaryTree:
         # Return type should be Boolean
         stack = Stack()
         stack.push(root)
-        grandparent = root
         while stack.size > 0:
             current = stack.pop()
+            if current.left_child is not None and current.right_child is not None:
+                if current.data < root.data:
+                    if current.left_child.data > root.data or current.right_child.data > root.data:
+                        return False
+                if current.data > root.data:
+                    if current.left_child.data < root.data or current.right_child.data < root.data:
+                        return False
             if current.right_child is not None:
-                if current.right_child.data > current.data and current.right_child.data > grandparent.data:
+                if current.right_child.data > current.data:
                     stack.push(current.right_child)
                 else:
                     return False
             if current.left_child is not None:
-                if current.left_child.data < current.data and current.left_child < grandparent.data:
+                if current.left_child.data < current.data:
                     stack.push(current.left_child)
                 else:
                     return False
-            grandparent = current
         return True
 
 
