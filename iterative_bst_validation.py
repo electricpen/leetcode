@@ -13,7 +13,7 @@ class Stack:
 
     def push(self, data):
         self.size += 1
-        self.storage.push(data)
+        self.storage.append(data)
 
     def pop(self):
         self.size -= 1
@@ -28,16 +28,25 @@ class BinaryTree:
         # Return type should be Boolean
         stack = Stack()
         stack.push(root)
-        while is_bst is True and stack.size > 0:
+        grandparent = root
+        while stack.size > 0:
             current = stack.pop()
             if current.right_child is not None:
-                if current.right.child.data > current.data:
+                if current.right_child.data > current.data and current.right_child.data > grandparent.data:
                     stack.push(current.right_child)
                 else:
                     return False
             if current.left_child is not None:
-                if current.left_child.data < current.data:
+                if current.left_child.data < current.data and current.left_child < grandparent.data:
                     stack.push(current.left_child)
                 else:
                     return False
+            grandparent = current
         return True
+
+
+test_root = TreeNode(10)
+test_root.left_child = TreeNode(5)
+test_root.right_child = TreeNode(15)
+test_bst = BinaryTree(test_root)
+test_bst.validate_BST_Itr(test_root)
