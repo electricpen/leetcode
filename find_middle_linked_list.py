@@ -1,3 +1,6 @@
+import math
+
+
 class Node:
     def __init__(self):
         self.data = None
@@ -44,14 +47,20 @@ class SinglyLinkedList:
     def find_middle_node(self):
         if self.head is None:
             return None
-        mid = self.size() // 2
+        mid = int(math.ceil(self.size() / 2))
         curr = self.head
-        for index in range(mid):
+        for index in range(1, mid):
             curr = curr.next
         return curr.getData()
 
 
 test = SinglyLinkedList()
-test.initialize([1, 2, 3, 4])
+test.initialize([1, 2, 3, 4, 5])
 print(test.size())
 print(test.find_middle_node())
+
+"""
+Optimal solution is to use two pointers and loop through with one pointer moving
+twice every iteration. You return the slow pointer since it should be at the
+halfway point.
+"""
