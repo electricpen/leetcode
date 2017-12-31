@@ -1,9 +1,8 @@
 def excel_column_name_to_number(column_title):
-    total = 0
-    for index in range(len(column_title)):
-        total *= 26
-        total += ord(column_title[index]) - (ord('A') - 1)
-    return total
+    if len(column_title) == 1:
+        return ord(column_title) - 64
+    else:
+        return (26 * excel_column_name_to_number(column_title[0:-1])) + (ord(column_title[-1:]) - 64)
 
 
-print(excel_column_name_to_number('ABC'))
+print(excel_column_name_to_number('BA'))

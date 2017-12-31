@@ -1,14 +1,5 @@
-def duplicate_items(list_numbers):
-    repeater = {}
-    repeats = []
-    for num in list_numbers:
-        if num in repeater:
-            if num not in repeats:
-                repeats.append(num)
-        else:
-            repeater[num] = True
-    repeats.sort()
-    return repeats
+def find_missing_number(list_numbers):
+    return sum(list(range(1 - 11))) - sum(list_numbers)
 
 
-duplicate_items([1, 2, 3, 1])
+print(find_missing_number([1, 2, 3, 4, 5, 6, 7, 8, 9]))
