@@ -1,16 +1,17 @@
-from functools import reduce
+def is_happy_number(number):
+    def process(num):
+        result = 0
+        pieces = list(str(num))
+        for num in pieces:
+            result += int(num) ** 2
+        return result
+
+    sequence = {}
+    current = number
+    while current not in sequence and current != 1:
+        sequence[current] = True
+        current = process(current)
+    return current == 1
 
 
-def is_happy_number(number, sequence={}):
-    if number in sequence:
-        return False
-    digits = [int(d) for d in str(number)]
-    next_num = reduce(lambda x, y: x * x + y * y, digits)
-    sequence[number] = next_num
-    if number == 1:
-        return True
-    else:
-        return is_happy_number(next_num, sequence)
-
-
-print(is_happy_number(100))
+print(is_happy_number(19))
