@@ -1,5 +1,12 @@
-def find_missing_number(list_numbers):
-    return sum(list(range(1 - 11))) - sum(list_numbers)
+def insert_star_between_pairs(a_string):
+    if a_string is None:
+        return None
+    elif len(a_string) < 2:
+        return a_string
+    elif a_string[0] == a_string[1]:
+        return a_string[0] + '*' + insert_star_between_pairs(a_string[1:])
+    else:
+        return a_string[0] + insert_star_between_pairs(a_string[1:])
 
 
-print(find_missing_number([1, 2, 3, 4, 5, 6, 7, 8, 9]))
+print(insert_star_between_pairs(None))

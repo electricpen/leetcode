@@ -17,24 +17,23 @@ class BinaryTree:
     def insert(self, root, data):
         # Return the new root
         if data < root.data:
-            if root.left_child is not None:
-                self.insert(root.left_child, data)
+            if root.left_child is None:
+                root.left_child = TreeNode(data)
+                return self.root
             else:
-                new_node = TreeNode(data)
-                root.left_child = new_node
-        elif data > root.data:
-            if root.right_child is not None:
-                self.insert(root.right_child, data)
+                return root.insert(root.left_child, data)
+        elif data > root.data
+            if root.right_child is None:
+                root.right_child = TreeNode(data)
+                return self.root
             else:
-                new_node = TreeNode(data)
-                root.right_child = new_node
+                return self.insert(root.right_child, data)
 
 
-def test(list):
-    test_tree = BinaryTree(TreeNode(list[0]))
-    for num in list[1:]:
-        test_tree.insert(test_tree.root, num)
-    return test_tree
-
-
-test([4, 2, 8, 5, 10])
+root = TreeNode(4)
+tree = BinaryTree(root)
+tree.insert(root, 2)
+tree.insert(root, 8)
+tree.insert(root, 5)
+tree.insert(root, 10)
+tree.insert(root, 6)
