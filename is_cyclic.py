@@ -48,4 +48,10 @@ class SinglyLinkedList:
                 fast = fast.next
                 if fast is not None and fast.data != slow.data:
                     fast = fast.next
-        return fast.data == slow.data
+        return fast is not None
+
+
+test = SinglyLinkedList()
+test.create([1, 2, 3, 4])
+test.head.next.next.next.next = test.head
+print(test.is_cyclic())
