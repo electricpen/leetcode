@@ -1,13 +1,3 @@
-class TreeNode:
-    def __init__(self, data, left_child=None, right_child=None):
-        self.data = data
-        self.left_child = left_child
-        self.right_child = right_child
-
-    def __str__(self):
-        return '%s' % self.data
-
-
 class BinaryTree:
 
     def __init__(self, root_data):
@@ -32,7 +22,7 @@ class BinaryTree:
 
     def create(self, data):
         for item in data:
-            new_node = TreeNode(item)
+            new_node = BinaryTree(item)
             self.insert(new_node, self)
 
     def inorder_iterative(self):
@@ -53,7 +43,6 @@ class BinaryTree:
                 curr = curr.right_child
             else:
                 curr = None
-
         return inorder_list
 
     def get_right_child(self):
@@ -67,3 +56,8 @@ class BinaryTree:
 
     def get_root_val(self):
         return self.data
+
+
+test = BinaryTree(10)
+test.create([5, 3, 7, 6, 8, 15, 20])
+print(test.inorder_iterative())
