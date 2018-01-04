@@ -15,8 +15,44 @@ class BinaryTree:
         self.left_child = None
         self.right_child = None
 
+    def insert(self, node, root):
+        if self is None:
+            self = node
+        else:
+            if root.data > node.data:
+                if root.left_child is None:
+                    root.left_child = node
+                else:
+                    self.insert(node, root.left_child)
+            elif root.data < node.data:
+                if root.right_child is None:
+                    root.right_child = node
+                else:
+                    self.insert(node, root.right_child)
+
+    def create(self, data):
+        for item in data:
+            new_node = TreeNode(item)
+            self.insert(new_node, self)
+
     def inorder_iterative(self):
         inorder_list = []
+        stack = []
+        if self is not None:
+            curr = self
+            stack.append(self)
+        while len(stack) > 0:
+            if curr:
+                while curr.left_child:
+                    stack.append(curr.left_child)
+                    curr = curr.left_child
+            curr = stack.pop()
+            inorder_list.append(curr.data)
+            if curr.right_child:
+                stack.append(curr.right_child)
+                curr = curr.right_child
+            else:
+                curr = None
 
         return inorder_list
 
