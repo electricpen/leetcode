@@ -1,12 +1,22 @@
-def insert_star_between_pairs(a_string):
-    if a_string is None:
-        return None
-    elif len(a_string) < 2:
-        return a_string
-    elif a_string[0] == a_string[1]:
-        return a_string[0] + '*' + insert_star_between_pairs(a_string[1:])
+def better_fibonacci(n):
+    if n < 2:
+        return n
     else:
-        return a_string[0] + insert_star_between_pairs(a_string[1:])
+        temp = 0
+        last = 1
+        curr = 1
+        count = 2
+        while count < n:
+            temp = last
+            last = curr
+            curr = temp + last
+            count += 1
+        return curr
 
 
-print(insert_star_between_pairs(None))
+print(better_fibonacci(2))
+print(better_fibonacci(3))
+print(better_fibonacci(4))
+print(better_fibonacci(5))
+print(better_fibonacci(6))
+print(better_fibonacci(7))
