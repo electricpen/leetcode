@@ -33,15 +33,29 @@ class SinglyLinkedList:
 
     def construct(self, data):
         for item in data:
-            self.insert(item)
+            new_node = Node()
+            new_node.setData(item)
+            self.insert(new_node)
 
     def find_nth_node_from_end(self, n):
         count = 0
         lead = self.head
         trailing = self.head
-        while lead is not None:
+        if lead is None:
+            return None
+        while lead.next is not None:
             lead = lead.next
             if count >= n:
                 trailing = trailing.next
             count += 1
-        return trailing
+        return trailing.data
+
+
+test = SinglyLinkedList()
+test.construct([1])
+print(test.find_nth_node_from_end(0))
+print(test.find_nth_node_from_end(1))
+print(test.find_nth_node_from_end(2))
+print(test.find_nth_node_from_end(3))
+print(test.find_nth_node_from_end(4))
+print(test.find_nth_node_from_end(5))
