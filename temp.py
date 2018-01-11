@@ -40,7 +40,7 @@ def find_range(input_list, input_number):
                 high_range += 1
             if input_list[high_range] != input_number:
                 high_range -= 1
-            return [low_range, high_range]
+            return Range(low_range, high_range)
         else:
             return None
 
@@ -62,3 +62,4 @@ print(find_range([1, 1, 1, 2], 2), 'should equal [3,3]')
 print(find_range([1, 2, 2, 3], 2), 'should equal [1,2]')
 print(find_range([1, 2, 2, 3], 1), 'should equal [0,0]')
 print(find_range([1, 2, 2, 3], 3), 'should equal [3,3]')
+print(find_range([1, 2, 5, 5, 8, 8, 10], 8), 'should equal [4,5]')
