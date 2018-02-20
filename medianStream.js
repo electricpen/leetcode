@@ -21,9 +21,23 @@ class MinHeap {
     return this.storage[(index + 1) * 2 + 1];
   }
 
-  heapifyUp(index) {}
+  heapifyUp(index) {
+    // if current is smaller than parent, swap
+    // recurse on parent index
+  }
 
-  heapifyDown(index) {}
+  heapifyDown(index) {
+    const c1 = (index + 1) * 2 - 1;
+    const c2 = (index + 1) * 2 + 1 - 1;
+
+    if (c1 < this.size() && this.storage[index] > this.storage[c1]) {
+      this.swap(index, c1);
+      this.heapifyDown(c1);
+    } else if (c2 < this.size() && this.storage[index] > this.storage[c2]) {
+      this.swap(index, c2);
+      this.heapifyDown(c2);
+    }
+  }
 
   insert(data) {
     this.storage.push(data);
